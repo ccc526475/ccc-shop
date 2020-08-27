@@ -13,6 +13,6 @@ public interface CategoryService {
 
     @ApiOperation(value = "通过查询商品分类")
     @GetMapping(value = "category/list")
-    public Result<List<CategoryEntity>> getCategoryByPid(Integer pid);
+    Result<List<CategoryEntity>> getCategoryByPid(Integer pid);
 
 }

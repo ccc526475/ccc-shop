@@ -40,7 +40,7 @@ public class MrSwagger2Config {
                 //条款地址
                 .termsOfServiceUrl("http://www.baidu.com")
                 //联系方式-->有String参数的方法但是已经过时，所以不推荐使用
-                .contact(new Contact("shenyaqi","baidu.com","shenyaqiii@163.com"))
+                .contact(new Contact("cuikangpu","baidu.com","c526475c@163.com"))
                 //版本
                 .version("v1.0")
                 //项目描述
