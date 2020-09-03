@@ -20,28 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50c28813-2736-4cfe-a8d9-95346021df85" name="Default Changelist" comment="船新版本">
-      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-basics/baidu-shop-basics-eureka-server/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-basics/baidu-shop-basics-eureka-server/src/main/java/com/baidu/RunEurekaApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-basics/baidu-shop-basics-eureka-server/src/main/resources/application.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-basics/baidu-shop-basics-eureka-server/target/classes/application.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-basics/baidu-shop-basics-eureka-server/target/classes/com/baidu/RunEurekaApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-basics/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-commoms/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-service-api/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-service/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mingrui-shop-commoms/mingrui-shop-common-core/src/main/java/com/baidu/shop/utils/ObjectUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-commoms/mingrui-shop-common-core/src/main/java/com/baidu/shop/utils/ObjectUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mingrui-shop-commoms/mingrui-shop-common-core/target/classes/com/baidu/shop/status/HTTPStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-commoms/mingrui-shop-common-core/target/classes/com/baidu/shop/status/HTTPStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/src/main/java/com/baidu/shop/entity/BrandDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/src/main/java/com/baidu/shop/dto/BrandDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/src/main/java/com/baidu/shop/service/BrandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/src/main/java/com/baidu/shop/service/BrandService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/src/main/java/com/baidu/shop/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/src/main/java/com/baidu/shop/service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/target/classes/com/baidu/shop/entity/CategoryEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/target/classes/com/baidu/shop/entity/CategoryEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/target/classes/com/baidu/shop/service/CategoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/target/classes/com/baidu/shop/service/CategoryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/src/main/java/com/baidu/shop/mapper/BrandMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/src/main/java/com/baidu/shop/mapper/BrandMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/src/main/java/com/baidu/shop/service/impl/BrandServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/src/main/java/com/baidu/shop/service/impl/BrandServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/src/main/java/com/baidu/shop/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/src/main/java/com/baidu/shop/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/target/classes/com/baidu/shop/mapper/CategoryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/target/classes/com/baidu/shop/mapper/CategoryMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/target/classes/com/baidu/shop/service/impl/CategoryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/target/classes/com/baidu/shop/service/impl/CategoryServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +176,7 @@
       <workItem from="1599103892914" duration="1688000" />
       <workItem from="1599112597072" duration="2719000" />
       <workItem from="1599121048107" duration="16970000" />
+      <workItem from="1599144487751" duration="829000" />
     </task>
     <task id="LOCAL-00001" summary="船新版本">
       <created>1598526823447</created>
@@ -239,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599046668986</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="船新版本">
+      <created>1599144685129</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1599144685129</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,10 +322,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1599046813616" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1599046684330">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1599144700703">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1599046684330" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1599144700703" />
     <state x="316" y="129" key="new project wizard" timestamp="1598958659759">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
