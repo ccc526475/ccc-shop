@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="50c28813-2736-4cfe-a8d9-95346021df85" name="Default Changelist" comment="船新版本">
+      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-basics/baidu-shop-basics-eureka-server/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-basics/baidu-shop-basics-eureka-server/src/main/java/com/baidu/RunEurekaApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-basics/baidu-shop-basics-eureka-server/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-basics/baidu-shop-basics-eureka-server/target/classes/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-basics/baidu-shop-basics-eureka-server/target/classes/com/baidu/RunEurekaApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-basics/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-commoms/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-service-api/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/baidu-shop-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baidu-shop-parent/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-commoms/mingrui-shop-common-core/src/main/java/com/baidu/shop/utils/ObjectUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-commoms/mingrui-shop-common-core/src/main/java/com/baidu/shop/utils/ObjectUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-commoms/mingrui-shop-common-core/target/classes/com/baidu/shop/status/HTTPStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-commoms/mingrui-shop-common-core/target/classes/com/baidu/shop/status/HTTPStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/src/main/java/com/baidu/shop/entity/BrandDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/src/main/java/com/baidu/shop/dto/BrandDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/src/main/java/com/baidu/shop/service/BrandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/src/main/java/com/baidu/shop/service/BrandService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/src/main/java/com/baidu/shop/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/src/main/java/com/baidu/shop/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/target/classes/com/baidu/shop/entity/CategoryEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/target/classes/com/baidu/shop/entity/CategoryEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/target/classes/com/baidu/shop/service/CategoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-xxx/target/classes/com/baidu/shop/service/CategoryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/src/main/java/com/baidu/shop/mapper/BrandMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/src/main/java/com/baidu/shop/mapper/BrandMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/src/main/java/com/baidu/shop/service/impl/BrandServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/src/main/java/com/baidu/shop/service/impl/BrandServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/src/main/java/com/baidu/shop/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/src/main/java/com/baidu/shop/service/impl/CategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/target/classes/com/baidu/shop/mapper/CategoryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/target/classes/com/baidu/shop/mapper/CategoryMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/target/classes/com/baidu/shop/service/impl/CategoryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-service/mingrui-shop-service-xxx/target/classes/com/baidu/shop/service/impl/CategoryServiceImpl.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../apache-maven-3.6.2" />
+        <option name="userSettingsFile" value="D:\apache-maven-3.6.2\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ggArMs2gIKJCn3SdbQZTzUJ9yZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.baidu.shop.dto" />
+      <recent name="com.baidu.global" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.RunUploadServerApplication">
+    <configuration name="RunEurekaServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="mingrui-shop-basics-eureka-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bd.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bd.RunEurekaServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunUploadServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="mingrui-shop-basics-upload-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.baidu.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.baidu.RunUploadServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunXXXApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="mingrui-shop-service-xxx" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.baidu.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.baidu.RunXXXApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunZullServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="mingrui-shop-basic-zuul" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.baidu.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.baidu.RunZullServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.RunEurekaServerApplication" />
+      <item itemvalue="Spring Boot.RunXXXApplication" />
+      <item itemvalue="Spring Boot.RunUploadServerApplication" />
+      <item itemvalue="Spring Boot.RunZullServerApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.RunXXXApplication" />
+        <item itemvalue="Spring Boot.RunZullServerApplication" />
+        <item itemvalue="Spring Boot.RunEurekaServerApplication" />
+        <item itemvalue="Spring Boot.RunUploadServerApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="50c28813-2736-4cfe-a8d9-95346021df85" name="Default Changelist" comment="" />
+      <created>1598526059144</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598526059144</updated>
+      <workItem from="1598526061318" duration="3349000" />
+      <workItem from="1598530071333" duration="7752000" />
+      <workItem from="1598578893314" duration="16113000" />
+      <workItem from="1598664672873" duration="1239000" />
+      <workItem from="1598674343794" duration="668000" />
+      <workItem from="1598841477835" duration="10078000" />
+      <workItem from="1598873050654" duration="9138000" />
+      <workItem from="1598940084885" duration="16899000" />
+      <workItem from="1598969504250" duration="55000" />
+      <workItem from="1599038192399" duration="5426000" />
+      <workItem from="1599055189576" duration="3000" />
+      <workItem from="1599055616933" duration="164000" />
+      <workItem from="1599103892914" duration="1688000" />
+      <workItem from="1599112597072" duration="2719000" />
+      <workItem from="1599121048107" duration="16970000" />
+    </task>
+    <task id="LOCAL-00001" summary="船新版本">
+      <created>1598526823447</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1598526823447</updated>
+    </task>
+    <task id="LOCAL-00002" summary="船新版本">
+      <created>1598534887682</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1598534887682</updated>
+    </task>
+    <task id="LOCAL-00003" summary="船新版本">
+      <created>1598534913356</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1598534913356</updated>
+    </task>
+    <task id="LOCAL-00004" summary="船新版本">
+      <created>1598536810281</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1598536810281</updated>
+    </task>
+    <task id="LOCAL-00005" summary="船新版本">
+      <created>1598597420783</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1598597420783</updated>
+    </task>
+    <task id="LOCAL-00006" summary="船新版本">
+      <created>1599046668986</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1599046668986</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="船新版本" />
+    <option name="LAST_COMMIT_MESSAGE" value="船新版本" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="249" y="0" key="#Project_Structure" timestamp="1598615235885">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1598615235885" />
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1599131185523">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1599131185523" />
+    <state x="259" y="335" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1598960766340">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="259" y="335" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1598960766340" />
+    <state x="499" y="158" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1599136022022">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="158" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.824@0.0.1536.824" timestamp="1599136022022" />
+    <state width="1177" height="338" key="GridCell.Tab.0.bottom" timestamp="1599144405123">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1177" height="338" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599144405123" />
+    <state width="1177" height="338" key="GridCell.Tab.0.center" timestamp="1599144405123">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1177" height="338" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1599144405123" />
+    <state width="1177" height="338" key="GridCell.Tab.0.left" timestamp="1599144405123">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1177" height="338" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1599144405123" />
+    <state width="1177" height="338" key="GridCell.Tab.0.right" timestamp="1599144405123">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1177" height="338" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1599144405123" />
+    <state width="1177" height="338" key="GridCell.Tab.1.bottom" timestamp="1599144405123">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1177" height="338" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599144405123" />
+    <state width="1177" height="338" key="GridCell.Tab.1.center" timestamp="1599144405123">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1177" height="338" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1599144405123" />
+    <state width="1177" height="338" key="GridCell.Tab.1.left" timestamp="1599144405123">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1177" height="338" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1599144405123" />
+    <state width="1177" height="338" key="GridCell.Tab.1.right" timestamp="1599144405123">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1177" height="338" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1599144405123" />
+    <state width="1177" height="148" key="GridCell.Tab.2.bottom" timestamp="1599136974530">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1177" height="148" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599136974530" />
+    <state width="1177" height="148" key="GridCell.Tab.2.center" timestamp="1599136974530">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1177" height="148" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1599136974530" />
+    <state width="1177" height="148" key="GridCell.Tab.2.left" timestamp="1599136974530">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1177" height="148" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1599136974530" />
+    <state width="1177" height="148" key="GridCell.Tab.2.right" timestamp="1599136974530">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1177" height="148" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1599136974530" />
+    <state x="340" y="132" key="RollbackChangesDialog" timestamp="1598960456777">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="340" y="132" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1598960456777" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1599046813616">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1599046813616" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1599046684330">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1599046684330" />
+    <state x="316" y="129" key="new project wizard" timestamp="1598958659759">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="316" y="129" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1598958659759" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1599140183569">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1599140183569" />
+  </component>
+</project>
