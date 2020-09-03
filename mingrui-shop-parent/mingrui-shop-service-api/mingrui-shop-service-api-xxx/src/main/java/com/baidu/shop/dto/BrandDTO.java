@@ -1,4 +1,4 @@
-package com.baidu.shop.entity;
+package com.baidu.shop.dto;
 
 import com.baidu.shop.base.BaseDTO;
 import com.baidu.shop.validate.group.MingruiOperation;

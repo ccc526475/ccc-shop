@@ -13,4 +13,8 @@ public class ObjectUtil {
 
         return null == obj;
     }
+    public static Boolean isNotNull(Object obj){
+
+        return null != obj;
+    }
 }
