@@ -31,6 +31,7 @@ import java.util.stream.Collectors;
  * @Version V1.0
  **/
 @RestController
+@Transactional
 public class BrandServiceImpl extends BaseApiService implements BrandService {
 
     @Resource
@@ -88,7 +89,6 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
     }
 
     @Override
-    @Transactional
     public Result<JSONObject> update(BrandDTO brandDTO) {
 
         //复制dto到entity

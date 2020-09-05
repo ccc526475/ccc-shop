@@ -68,7 +68,7 @@ public class SpecGroupServiceImpl extends BaseApiService implements SpecGroupSer
     public Result<JSONObject> delete(Integer id) {
 
         //如果规格被参数绑定就不能被删除
-        StringBuffer msg = new StringBuffer();
+        StringBuilder msg = new StringBuilder();
 
         SpecGroupEntity specGroupEntity = specGroupMapper.selectByPrimaryKey(id);
 

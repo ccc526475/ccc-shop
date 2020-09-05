@@ -1,4 +1,4 @@
-package com.baidu.shop.swagger2;
+package com.baidu.shop.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

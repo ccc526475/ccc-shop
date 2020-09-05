@@ -75,35 +75,34 @@ public class CategoryServiceImpl extends BaseApiService implements CategoryServi
     public Result<JSONObject> delete(Integer id) {
 
         //判断id是否有效
-        if (null == id) return this.setResultSuccess("id为空,删除失败");
+        if (null == id) return this.setResultError("id为空,删除失败");
 
         CategoryEntity categoryEntity = categoryMapper.selectByPrimaryKey(id);
 
         //判断是否是父节点
-        if (categoryEntity.getIsParent() == 1)return this.setResultError("不能删除父节点");
+        if (categoryEntity.getIsParent() == 1) return this.setResultError("不能删除父节点");
 
         //如果分类被规格绑定 就不能被删除
-        StringBuffer msg = new StringBuffer();
+        StringBuilder msg = new StringBuilder();
         Example groupExample = new Example(SpecGroupEntity.class);
         groupExample.createCriteria().andEqualTo("cid",id);
         List<SpecGroupEntity> specGroupList = specGroupMapper.selectByExample(groupExample);
         if (!specGroupList.isEmpty()) {
+            msg.append("规格:");
             specGroupList.forEach(spec -> msg.append("("+spec.getName()+")"));
-            msg.append("规格");
         }
 
 
         //如果分类被品牌绑定 就不能被删除
-        StringBuffer brandMsg = new StringBuffer();
+        StringBuilder brandMsg = new StringBuilder();
         List<BrandEntity> brandList = brandMapper.getBrandByCategoryId(id);
         if (!brandList.isEmpty())  {
+            brandMsg.append("  品牌:");
             brandList.forEach(b ->brandMsg.append("{"+b.getName()+"}"));
-            brandMsg.append("品牌");
         }
 
-        if (msg.length() > 0 || brandMsg.length() >0) {
-            return this.setResultError(categoryEntity.getName() + " 被" + msg +" "+ brandMsg +" 绑定,不能被删除");
-        }
+        if (msg.length() > 0 || brandMsg.length() >0) return this.setResultError(categoryEntity.getName() + " 被" + msg +" "+ brandMsg +" 绑定,不能被删除");
+
 
         //没有子节点时,改变父节点状态
         Example example = new Example(CategoryEntity.class);

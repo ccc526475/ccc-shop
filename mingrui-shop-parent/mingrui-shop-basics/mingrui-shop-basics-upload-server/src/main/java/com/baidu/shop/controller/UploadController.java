@@ -20,7 +20,7 @@ import java.util.UUID;
  * @Version V1.0
  **/
 @RestController
-@RequestMapping("/upload")
+@RequestMapping("/uploadImg")
 public class UploadController extends BaseApiService {
 
     //window系统的上传目录
