@@ -3,12 +3,14 @@ package com.baidu.shop.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.baidu.shop.entity.BrandEntity;
 import com.baidu.shop.entity.SpecGroupEntity;
+import com.baidu.shop.entity.SpuEntity;
 import com.baidu.shop.mapper.BrandMapper;
 import com.baidu.shop.mapper.CategoryMapper;
 import com.baidu.shop.base.BaseApiService;
 import com.baidu.shop.base.Result;
 import com.baidu.shop.entity.CategoryEntity;
 import com.baidu.shop.mapper.SpecGroupMapper;
+import com.baidu.shop.mapper.SpuMapper;
 import com.baidu.shop.service.CategoryService;
 import com.baidu.shop.status.HTTPStatus;
 import com.sun.org.apache.bcel.internal.generic.NEW;
@@ -39,6 +41,9 @@ public class CategoryServiceImpl extends BaseApiService implements CategoryServi
 
     @Resource
     private BrandMapper brandMapper;
+
+    @Resource
+    private SpuMapper spuMapper;
 
     @Override
     public Result<List<CategoryEntity>> getCategoryByPid(Integer pid) {
@@ -82,13 +87,23 @@ public class CategoryServiceImpl extends BaseApiService implements CategoryServi
         //判断是否是父节点
         if (categoryEntity.getIsParent() == 1) return this.setResultError("不能删除父节点");
 
+        //如果分类被商品绑定 就不能被删除
+        StringBuilder spuMsg = new StringBuilder();
+        Example spuExample = new Example(SpuEntity.class);
+        spuExample.createCriteria().andEqualTo("cid3",id);
+        List<SpuEntity> spuList = spuMapper.selectByExample(spuExample);
+        if (!spuList.isEmpty()) {
+            spuMsg.append("商品:");
+            spuList.forEach(spec -> spuMsg.append("["+spec.getTitle()+"]"));
+        }
+
         //如果分类被规格绑定 就不能被删除
         StringBuilder msg = new StringBuilder();
         Example groupExample = new Example(SpecGroupEntity.class);
         groupExample.createCriteria().andEqualTo("cid",id);
         List<SpecGroupEntity> specGroupList = specGroupMapper.selectByExample(groupExample);
         if (!specGroupList.isEmpty()) {
-            msg.append("规格:");
+            msg.append("  规格:");
             specGroupList.forEach(spec -> msg.append("("+spec.getName()+")"));
         }
 
@@ -101,7 +116,9 @@ public class CategoryServiceImpl extends BaseApiService implements CategoryServi
             brandList.forEach(b ->brandMsg.append("{"+b.getName()+"}"));
         }
 
-        if (msg.length() > 0 || brandMsg.length() >0) return this.setResultError(categoryEntity.getName() + " 被" + msg +" "+ brandMsg +" 绑定,不能被删除");
+        if (msg.length() > 0 || brandMsg.length() >0 || spuMsg.length() > 0)
+            return this.setResultError(
+                    categoryEntity.getName() + " 被" + spuMsg +" "+ msg +" "+ brandMsg +" 绑定,不能被删除");
 
 
         //没有子节点时,改变父节点状态

@@ -6,10 +6,13 @@ import com.baidu.shop.base.Result;
 import com.baidu.shop.dto.BrandDTO;
 import com.baidu.shop.entity.BrandEntity;
 import com.baidu.shop.entity.CategoryBrandEntity;
+import com.baidu.shop.entity.SpuEntity;
 import com.baidu.shop.mapper.BrandMapper;
 import com.baidu.shop.mapper.CategoryBrandMapper;
+import com.baidu.shop.mapper.SpuMapper;
 import com.baidu.shop.service.BrandService;
 import com.baidu.shop.utils.BaiduBeanUtil;
+import com.baidu.shop.utils.ObjectUtil;
 import com.baidu.shop.utils.PinyinUtil;
 import com.baidu.shop.utils.StringUtil;
 import com.github.pagehelper.PageHelper;
@@ -40,14 +43,20 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
     @Resource
     private CategoryBrandMapper categoryBrandMapper;
 
+    @Resource
+    private SpuMapper spuMapper;
+
     @Override
     public Result<PageInfo<BrandEntity>> getBrandInfo(BrandDTO brandDTO) {
         //分页
+        if (ObjectUtil.isNotNull(brandDTO.getPage())
+                && ObjectUtil.isNotNull(brandDTO.getRows()))
         PageHelper.startPage(brandDTO.getPage(), brandDTO.getRows());
 
         //排序
         Example example = new Example(BrandEntity.class);
-        if (StringUtil.isNotEmpty(brandDTO.getSort()))  example.setOrderByClause(brandDTO.getOrderByClause());
+        if (StringUtil.isNotEmpty(brandDTO.getSort()))
+            example.setOrderByClause(brandDTO.getOrderByClause());
 
         //条件查询
         if(StringUtil.isNotEmpty(brandDTO.getName())) example.
@@ -111,9 +120,29 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
     @Override
     @Transactional
     public Result<JSONObject> delete(Integer id) {
+
+        StringBuilder msg = new StringBuilder();
+
+        //如果品牌被商品绑定 就不能被删除
+        Example example = new Example(SpuEntity.class);
+        example.createCriteria().andEqualTo("brandId", id);
+        List<SpuEntity> list = spuMapper.selectByExample(example);
+        if (!list.isEmpty()) list.forEach(spu -> msg.append("{"+spu.getTitle()+"}"));
+
+        if (msg.length()>0) return this.setResultError("被商品"+msg+"绑定,不能删除");
+
         this.delCategoryBrand(id);
         brandMapper.deleteByPrimaryKey(id);
         return this.setResultSuccess();
+    }
+
+    @Override
+    public Result<List<BrandEntity>> getBrandByCategory(Integer cid) {
+        if (ObjectUtil.isNotNull(cid)){
+            List<BrandEntity> brandList = brandMapper.getBrandByCategory(cid);
+            return this.setResultSuccess(brandList);
+        }
+        return null;
     }
 
     //删除关系表中的数据

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baidu.shop.mapper.SpuMapper">
+    <resultMap id="BaseResultMap" type="com.baidu.shop.dto.SpuDTO">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="subTitle" column="sub_title"/>
+        <result property="cid1" column="cid1"/>
+        <result property="cid2" column="cid2"/>
+        <result property="cid3" column="cid3"/>
+        <result property="brandId" column="brand_id"/>
+        <result property="saleable" column="saleable"/>
+        <result property="valid" column="valid"/>
+        <result property="createTime" column="create_time"/>
+        <result property="lastUpdateTime" column="last_update_time"/>
+        <result property="brandName" column="brandName"/>
+        <result property="categoryName" column="categoryName"/>
+    </resultMap>
+
+    <select id="getSpuDTO" parameterType="com.baidu.shop.dto.SpuDTO" resultMap="BaseResultMap">
+        SELECT
+        s.*,b.name as brandName,GROUP_CONCAT(c.name separator '/') as categoryName
+        from tb_category c,tb_brand b,tb_spu s
+        where c.id in(s.cid1,s.cid2,s.cid3)
+        and b.id = s.brand_id
+        <if test="saleable != null and saleable != 2">
+            and s.saleable = #{saleable}
+        </if>
+        <if test="title != null and title != '' ">
+            and s.title like CONCAT("%",#{title},"%")
+        </if>
+        group by s.id
+        <if test="sort != null">
+            order by s.${sort}
+            <if test="order">
+                desc
+            </if>
+        </if>
+        <if test="page != null and rows != null">
+            limit #{page},#{rows}
+        </if>
+    </select>
+
+    <select id="count" parameterType="com.baidu.shop.dto.SpuDTO" resultType="java.lang.Integer">
+        select count(1) from tb_spu
+        where 1 = 1
+        <if test="saleable != null and saleable != 2">
+            and saleable = #{saleable}
+        </if>
+        <if test="title != null and title != ''">
+            and title like CONCAT("%",#{title},"%")
+        </if>
+    </select>
+
+</mapper>
