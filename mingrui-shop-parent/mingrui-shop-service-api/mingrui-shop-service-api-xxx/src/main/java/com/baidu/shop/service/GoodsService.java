@@ -10,6 +10,7 @@ import com.baidu.shop.entity.SpuEntity;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,16 +19,16 @@ import java.util.List;
 public interface GoodsService {
 
     @GetMapping(value = "/spu/list")
-    Result<List<JSONObject>> list(SpuDTO spuDTO);
+    Result<List<SpuDTO>> list(@SpringQueryMap SpuDTO spuDTO);
 
     @PostMapping(value = "/spu/save")
     Result<JSONObject> save(@RequestBody SpuDTO spuDTO);
 
     @GetMapping(value = "/spu/getSpuDetailBySpuId")
-    Result<SpuDetailEntity> getSpuDetailBySpuId(Integer spuId);
+    Result<SpuDetailEntity> getSpuDetailBySpuId(@RequestParam Integer spuId);
 
     @GetMapping(value = "/spu/getSkuBySpuId")
-    Result<List<SkuDTO>> getSkuBySpuId(Integer spuId);
+    Result<List<SkuDTO>> getSkuBySpuId(@RequestParam Integer spuId);
 
     @PutMapping(value = "/spu/save")
     Result<JSONObject> edit(@RequestBody SpuDTO spuDTO);

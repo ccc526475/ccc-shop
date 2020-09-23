@@ -176,4 +176,16 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
         }
     }
 
+    //过滤查询
+   @Override
+    public Result<List<BrandEntity>> getBrandByIdlist(String brandIdStr) {
+
+       List<String> brandIdStrList = Arrays.asList(brandIdStr.split(","));
+
+       List<Integer> brandIdList = brandIdStrList.stream().map(brandId -> Integer.parseInt(brandId)).collect(Collectors.toList());
+
+       List<BrandEntity> brandList = brandMapper.selectByIdList(brandIdList);
+
+       return this.setResultSuccess(brandList);
+    }
 }

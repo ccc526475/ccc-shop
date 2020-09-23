@@ -48,7 +48,7 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
     private StockMapper stockMapper;
 
     @Override
-    public Result<List<JSONObject>> list(SpuDTO spuDTO) {
+    public Result<List<SpuDTO>> list(SpuDTO spuDTO) {
         //处理下分页信息,前台每次传来的 1,5  2,5  3,5............,所有得处理下
         if(ObjectUtil.isNotNull(spuDTO.getPage()) && ObjectUtil.isNotNull(spuDTO.getRows())){
             spuDTO.setPage((spuDTO.getPage()-1) * spuDTO.getRows());
@@ -104,7 +104,7 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
         spuDetailMapper.insertSelective(spuDetailEntity);
 
         //sku add
-        this.skuSave(spuDTO.getSkus(),spuDTO.getId(),date);
+       this.skuSave(spuDTO.getSkus(),spuId,date);
 
         return this.setResultSuccess();
     }
@@ -140,10 +140,10 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
         List<SkuEntity> skuEntities = skuMapper.selectByExample(example);
 
         List<Long> skuIDList = skuEntities.stream().map(sku -> sku.getId()).collect(Collectors.toList());
-        skuMapper.deleteByIdList(skuIDList);
-        
-        //stock del
-        stockMapper.deleteByIdList(skuIDList);
+
+            skuMapper.deleteByIdList(skuIDList);
+            //stock del
+            stockMapper.deleteByIdList(skuIDList);
 
         //sku and stock add
         this.skuSave(spuDTO.getSkus(),spuDTO.getId(),date);

@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @ClassName CategoryServiceImpl
@@ -142,5 +144,18 @@ public class CategoryServiceImpl extends BaseApiService implements CategoryServi
 
         List<CategoryEntity> byBrandId = categoryMapper.getByBrandId(brandId);
         return this.setResultSuccess(byBrandId);
+    }
+
+    //过滤查询
+    @Override
+    public Result<List<CategoryEntity>> getCateByIdList(String cidStr) {
+
+        List<String> cidsStr = Arrays.asList(cidStr.split(","));
+
+        List<Integer> cidList = cidsStr.stream().map(cid -> Integer.parseInt(cid)).collect(Collectors.toList());
+
+        List<CategoryEntity> categoryList = categoryMapper.selectByIdList(cidList);
+
+        return this.setResultSuccess(categoryList);
     }
 }

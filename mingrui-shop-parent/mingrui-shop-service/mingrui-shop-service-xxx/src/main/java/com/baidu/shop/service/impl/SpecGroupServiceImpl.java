@@ -86,7 +86,7 @@ public class SpecGroupServiceImpl extends BaseApiService implements SpecGroupSer
 
 
     @Override
-    public Result<List<SpecParamEntity>> list(SpecParamDTO specParamDTO) {
+    public Result<List<SpecParamEntity>> specParamlist(SpecParamDTO specParamDTO) {
 
         Example example = new Example(SpecParamEntity.class);
         Example.Criteria criteria = example.createCriteria();
@@ -95,6 +95,9 @@ public class SpecGroupServiceImpl extends BaseApiService implements SpecGroupSer
         }
         if (ObjectUtil.isNotNull(specParamDTO.getCid())){
             criteria.andEqualTo("cid",specParamDTO.getCid());
+        }
+        if (ObjectUtil.isNotNull(specParamDTO.getSearching()) ){
+            criteria.andEqualTo("searching",specParamDTO.getSearching());
         }
         List<SpecParamEntity> list = specParamMapper.selectByExample(example);
 
