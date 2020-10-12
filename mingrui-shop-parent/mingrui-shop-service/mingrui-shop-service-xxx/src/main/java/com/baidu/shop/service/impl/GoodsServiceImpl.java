@@ -3,24 +3,27 @@ package com.baidu.shop.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.baidu.shop.base.BaseApiService;
 import com.baidu.shop.base.Result;
+import com.baidu.shop.component.MrRabbitMQ;
+import com.baidu.shop.constant.MqMessageConstant;
 import com.baidu.shop.dto.SkuDTO;
 import com.baidu.shop.dto.SpuDTO;
 import com.baidu.shop.dto.SpuDetailDTO;
 import com.baidu.shop.entity.*;
+import com.baidu.shop.feign.EsFeign;
+import com.baidu.shop.feign.TemplateFeign;
 import com.baidu.shop.mapper.*;
 import com.baidu.shop.service.GoodsService;
 import com.baidu.shop.status.HTTPStatus;
 import com.baidu.shop.utils.BaiduBeanUtil;
 import com.baidu.shop.utils.ObjectUtil;
-import com.baidu.shop.utils.StringUtil;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import org.aspectj.weaver.ast.Var;
+import org.springframework.aop.framework.AopContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -32,7 +35,6 @@ import java.util.stream.Collectors;
  * @Version V1.0
  **/
 @RestController
-@Transactional
 public class GoodsServiceImpl extends BaseApiService implements GoodsService {
 
     @Resource
@@ -47,7 +49,17 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
     @Resource
     private StockMapper stockMapper;
 
+    @Resource
+    private TemplateFeign templateFeign;
+
+    /*@Resource
+    private EsFeign esFeign;*/
+
+    @Resource
+    private MrRabbitMQ mrRabbitMQ;
+
     @Override
+    @Transactional
     public Result<List<SpuDTO>> list(SpuDTO spuDTO) {
         //处理下分页信息,前台每次传来的 1,5  2,5  3,5............,所有得处理下
         if(ObjectUtil.isNotNull(spuDTO.getPage()) && ObjectUtil.isNotNull(spuDTO.getRows())){
@@ -84,9 +96,28 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
         return setResult(HTTPStatus.OK,PageInfo.getTotal()+"",collect);*/
     }
 
+    //add 静态页面  add es
     @Override
     public Result<JSONObject> save(SpuDTO spuDTO) {
+      //获取代理对象
+        GoodsServiceImpl proxyObj  = (GoodsServiceImpl)AopContext.currentProxy();
+        Integer spuId = proxyObj.add(spuDTO);
+      /*  //调用模板接口
+        if (ObjectUtil.isNotNull(spuId)) {
+            Result<JSONObject> staticHTMLTemplate = templateFeign.createStaticHTMLTemplate(spuId);
+            System.out.println(staticHTMLTemplate);
+        }*/
 
+      /* //将新增数据添加到es
+        esFeign.saveGoodsES(spuId);*/
+
+        mrRabbitMQ.send(spuId+"", MqMessageConstant.SPU_ROUT_KEY_SAVE);
+
+        return this.setResultSuccess();
+    }
+
+    @Transactional
+    public Integer add(SpuDTO spuDTO){
         Date date = new Date();
         // spu add
         SpuEntity spuEntity = BaiduBeanUtil.copyProperties(spuDTO, SpuEntity.class);
@@ -97,6 +128,7 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
         spuMapper.insertSelective(spuEntity);
 
         Integer spuId = spuEntity.getId();
+
         // detail add
         SpuDetailDTO spuDetail = spuDTO.getSpuDetail();
         spuDetail.setSpuId(spuId);
@@ -104,24 +136,28 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
         spuDetailMapper.insertSelective(spuDetailEntity);
 
         //sku add
-       this.skuSave(spuDTO.getSkus(),spuId,date);
+        this.skuSave(spuDTO.getSkus(),spuId,date);
 
-        return this.setResultSuccess();
+        return spuId;
     }
 
+
     @Override
+    @Transactional
     public Result<SpuDetailEntity> getSpuDetailBySpuId(Integer spuId) {
         SpuDetailEntity spuDetailEntity = spuDetailMapper.selectByPrimaryKey(spuId);
         return this.setResultSuccess(spuDetailEntity);
     }
 
     @Override
+    @Transactional
     public Result<List<SkuDTO>> getSkuBySpuId(Integer spuId) {
         List<SkuDTO> skuList = skuMapper.getSkuBySpuId(spuId);
         return this.setResultSuccess(skuList);
     }
 
     @Override
+    @Transactional
     public Result<JSONObject> edit(SpuDTO spuDTO) {
 
         Date date = new Date();
@@ -152,6 +188,7 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
     }
 
     @Override
+    @Transactional
     public Result<JSONObject> del(Integer spuId) {
 
         //spu del
@@ -161,10 +198,18 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
         //sku and stock del
         this.skuAndStockDel(spuId);
 
+        //删除静态html
+        File file = new File("D:\\six\\shop-vue\\static-html\\item\\" + spuId + ".html");
+        if (file.exists()){
+            file.delete();
+        }
+
+
         return this.setResultSuccess();
     }
 
     @Override
+    @Transactional
     public Result<JSONObject> sale(SpuDTO spuDTO) {
         SpuEntity spuEntity = BaiduBeanUtil.copyProperties(spuDTO, SpuEntity.class);
         if (spuDTO.getSaleable() == 1){

@@ -1,5 +1,6 @@
 package com.baidu.shop.dto;
 
+import com.baidu.shop.entity.SpecParamEntity;
 import com.baidu.shop.utils.BaiduBeanUtil;
 import com.baidu.shop.validate.group.MingruiOperation;
 import io.swagger.annotations.ApiModel;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * @ClassName ScepGroupEntity
@@ -34,4 +36,7 @@ public class SpecGroupDTO {
     @ApiModelProperty(value = "规格组名称")
     @NotEmpty(message = "规格组名称不能为空",groups = {MingruiOperation.Add.class})
     private String name;
+
+    @ApiModelProperty(hidden = true)
+    List<SpecParamEntity> SpecParamList;
 }

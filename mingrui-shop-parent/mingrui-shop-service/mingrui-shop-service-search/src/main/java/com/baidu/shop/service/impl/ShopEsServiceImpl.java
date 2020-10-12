@@ -1,6 +1,7 @@
 package com.baidu.shop.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baidu.shop.BaseDTO.BaseSearch;
 import com.baidu.shop.base.BaseApiService;
 import com.baidu.shop.base.Result;
 import com.baidu.shop.document.GoodsDoc;
@@ -20,9 +21,12 @@ import com.baidu.shop.service.ShopEsService;
 import com.baidu.shop.status.HTTPStatus;
 import com.baidu.shop.utils.ESHighLightUtil;
 import com.baidu.shop.utils.JSONUtil;
+import com.baidu.shop.utils.ObjectUtil;
 import com.baidu.shop.utils.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.aggregations.Aggregation;
@@ -71,13 +75,16 @@ public class ShopEsServiceImpl extends BaseApiService implements ShopEsService {
         搜索
      */
     @Override
-    public BaseResponse search(String search,Integer page) {
+    public BaseResponse search(BaseSearch baseSearch) {
+        String filterStr = baseSearch.getFilterStr();
+        Integer page = baseSearch.getPage();
+        String search = baseSearch.getSearch();
 
         //判断搜索内容是否为空
         if (StringUtil.isEmpty(search)) throw new RuntimeException("查询内容不能为空");
 
         //构建查询条件
-        NativeSearchQueryBuilder queryBuilder= this.getSearch(search, page);
+        NativeSearchQueryBuilder queryBuilder= this.getSearch(search, page,filterStr);
 
         //查询
         SearchHits<GoodsDoc> searchHits = elasticsearchRestTemplate.search(queryBuilder.build(), GoodsDoc.class);
@@ -155,9 +162,27 @@ public class ShopEsServiceImpl extends BaseApiService implements ShopEsService {
     /*
         构建查询条件
      */
-    private NativeSearchQueryBuilder getSearch(String search,Integer page){
+    private NativeSearchQueryBuilder getSearch(String search,Integer page,String filterStr){
 
         NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
+
+        if (StringUtil.isNotEmpty(filterStr) && filterStr.length() > 2){
+
+            BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
+            Map<String, String> filterMap = JSONUtil.toMapValueString(filterStr);
+
+            filterMap.forEach((k,v) ->{
+                MatchQueryBuilder matchQueryBuilder = null;
+                //分类/品牌 和规格参数查询方式不一样
+                if (k.equals("cid3") || k.equals("brandId")){
+                    matchQueryBuilder = QueryBuilders.matchQuery(k, v);
+                }else{
+                    matchQueryBuilder = QueryBuilders.matchQuery("specs." + k + ".keyword",v);
+                }
+                boolQueryBuilder.must(matchQueryBuilder);
+            });
+            queryBuilder.withFilter(boolQueryBuilder);
+        }
 
         //分页
         queryBuilder.withPageable(PageRequest.of(page-1,10));
@@ -236,7 +261,7 @@ public class ShopEsServiceImpl extends BaseApiService implements ShopEsService {
        创建索引
      */
     @Override
-    public Result<JSONObject> saveGoodsES() {
+    public Result<JSONObject> saveGoodsES(Integer spuId) {
 
         IndexOperations indexOperations = elasticsearchRestTemplate.indexOps(GoodsDoc.class);
         //创建索引
@@ -245,15 +270,26 @@ public class ShopEsServiceImpl extends BaseApiService implements ShopEsService {
             indexOperations.createMapping();
             if (b) log.info("索引创建成功");
         }
-        List<GoodsDoc> goodsDocs = this.esGoodsInfo();
+        List<GoodsDoc> goodsDocs = this.esGoodsInfo(spuId);
         elasticsearchRestTemplate.save(goodsDocs);
         return this.setResultSuccess();
     }
+    //rabbitmq add es
+    @Override
+    public Result<JSONObject> saveData(Integer spuId) {
 
-    private List<GoodsDoc> esGoodsInfo() {
+        List<GoodsDoc> goodsDocs = this.esGoodsInfo(spuId);
+        GoodsDoc goodsDoc = goodsDocs.get(0);
+        elasticsearchRestTemplate.save(goodsDoc);
+        return this.setResultSuccess();
+    }
+
+    private List<GoodsDoc> esGoodsInfo(Integer spuId) {
 
         SpuDTO spuDTO = new SpuDTO();
-
+        if (spuId != 0){
+            spuDTO.setId(spuId);
+        }
         Result<List<SpuDTO>> spuInfo = goodsFeign.list(spuDTO);
 
         //查询出来的数据是多个spu

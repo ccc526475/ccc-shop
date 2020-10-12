@@ -26,6 +26,9 @@
         <if test="saleable != null and saleable != 2">
             and s.saleable = #{saleable}
         </if>
+        <if test="id != null">
+            and s.id = #{id}
+        </if>
         <if test="title != null and title != '' ">
             and s.title like CONCAT("%",#{title},"%")
         </if>

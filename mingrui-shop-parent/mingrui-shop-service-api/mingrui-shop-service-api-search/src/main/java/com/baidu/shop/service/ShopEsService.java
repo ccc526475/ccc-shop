@@ -1,12 +1,15 @@
 package com.baidu.shop.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baidu.shop.BaseDTO.BaseSearch;
+import com.baidu.shop.base.BaseDTO;
 import com.baidu.shop.base.Result;
 import com.baidu.shop.document.GoodsDoc;
 import com.baidu.shop.response.BaseResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -22,12 +25,16 @@ public interface ShopEsService {
     @GetMapping(value = "es/clearGoodsEs")
     Result<JSONObject> clearGoodsEs();
 
-    @ApiOperation(value = "新增es商品数据")
+    @ApiOperation(value = "新增es商品数据,需要输入0")
     @GetMapping(value = "es/saveGoodsEs")
-    Result<JSONObject> saveGoodsES();
+    Result<JSONObject> saveGoodsES(@RequestParam Integer spuId);
 
     @ApiOperation(value = "搜索")
     @GetMapping(value = "/es/search")
-    BaseResponse search(String search, Integer page);
+    BaseResponse search(BaseSearch baseSearch);
+
+    @ApiOperation(value = "新增数据到es")
+    @PostMapping(value = "es/saveData")
+    Result<JSONObject> saveData(Integer spuId);
 
 }

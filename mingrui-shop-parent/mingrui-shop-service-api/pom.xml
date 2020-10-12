@@ -14,6 +14,7 @@
     <modules>
         <module>mingrui-shop-service-api-xxx</module>
         <module>mingrui-shop-service-api-search</module>
+        <module>mingrui-shop-service-api-template</module>
     </modules>
     <dependencies>
         <!-- SpringBoot-整合Web组件 -->
