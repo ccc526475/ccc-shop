@@ -257,9 +257,18 @@ public class ShopEsServiceImpl extends BaseApiService implements ShopEsService {
         return this.setResultSuccess();
     }
 
+    //mq 删除 es
+    @Override
+    public Result<JSONObject> delData(Integer spuId) {
+        GoodsDoc goodsDoc = new GoodsDoc();
+        goodsDoc.setId(spuId.longValue());
+        elasticsearchRestTemplate.delete(goodsDoc);
+        return this.setResultSuccess();
+    }
+
     /*
-       创建索引
-     */
+           创建索引
+         */
     @Override
     public Result<JSONObject> saveGoodsES(Integer spuId) {
 

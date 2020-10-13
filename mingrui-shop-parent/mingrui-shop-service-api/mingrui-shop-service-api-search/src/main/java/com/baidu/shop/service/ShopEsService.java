@@ -8,6 +8,7 @@ import com.baidu.shop.document.GoodsDoc;
 import com.baidu.shop.response.BaseResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,4 +38,7 @@ public interface ShopEsService {
     @PostMapping(value = "es/saveData")
     Result<JSONObject> saveData(Integer spuId);
 
+    @ApiOperation(value = "通过id删除es数据")
+    @DeleteMapping(value = "es/saveData")
+    Result<JSONObject> delData(Integer spuId);
 }

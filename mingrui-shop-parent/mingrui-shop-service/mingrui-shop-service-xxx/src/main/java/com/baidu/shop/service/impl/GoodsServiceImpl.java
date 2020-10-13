@@ -184,6 +184,8 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
         //sku and stock add
         this.skuSave(spuDTO.getSkus(),spuDTO.getId(),date);
 
+        mrRabbitMQ.send(spuDTO.getId()+"",MqMessageConstant.SPU_ROUT_KEY_UPDATE);
+
         return this.setResultSuccess();
     }
 
@@ -198,12 +200,14 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
         //sku and stock del
         this.skuAndStockDel(spuId);
 
-        //删除静态html
+        /*//删除静态html
         File file = new File("D:\\six\\shop-vue\\static-html\\item\\" + spuId + ".html");
         if (file.exists()){
             file.delete();
-        }
+        }*/
 
+        //mq删除
+        mrRabbitMQ.send(spuId+"",MqMessageConstant.SPU_ROUT_KEY_DELETE);
 
         return this.setResultSuccess();
     }

@@ -82,6 +82,16 @@ public class TemplateServiceImpl extends BaseApiService implements TemplateServi
 
         return this.setResultSuccess();
     }
+    //mq删除静态html
+    @Override
+    public Result<JSONObject> delHTMLBySpuId(Integer spuId) {
+        File file = new File(staticHTMLPath + File.separator + spuId + ".html");
+        boolean delete = file.delete();
+        if (!delete){
+            return this.setResultSuccess("文件删除失败");
+        }
+        return this.setResultSuccess();
+    }
 
     @Override
     public Result<JSONObject> initStaticHTMLTemplate() {
