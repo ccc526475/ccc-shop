@@ -205,16 +205,16 @@
                             <div class="fl title">
                                 <div class="control-group">
                                     <div class="controls">
-                                        <input autocomplete="off" type="text" disabled value="1" minnum="1" class="itxt" />
-                                        <a href="javascript:void(0)" class="increment plus">+</a>
-                                        <a href="javascript:void(0)" class="increment mins">-</a>
+                                        <input autocomplete="off" type="text" v-model="num" disabled value="1" minnum="1" class="itxt" />
+                                        <a href="javascript:void(0)" @click="increment" class="increment plus">+</a>
+                                        <a href="javascript:void(0)" @click="decrement" class="increment mins">-</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="fl">
                                 <ul class="btn-choose unstyled">
                                     <li>
-                                        <a href="success-cart.html" target="_blank" class="sui-btn  btn-danger addshopcar">加入购物车</a>
+                                        <a href="/success-cart.html" @click.prevent="addCar" target="_blank" class="sui-btn  btn-danger addshopcar">加入购物车</a>
                                     </li>
                                 </ul>
                             </div>
@@ -641,12 +641,72 @@
             mrshop,
             specGroupList,
             generics,
-            specParams
+            specParams,
+            num:1
+        },
+        methods:{
+            increment(){
+                if(this.num < this.sku.stock) this.num++;
+            },
+            decrement(){
+                if(this.num > 1) this.num--;
+            },
+            addCar(){
+
+                mrshop.checkUserLogin().then(res =>{
+
+                    mrshop.http.post("/car/car/addCar",{
+                        skuId:this.sku.id,
+                        num:this.num
+                    }).then(res =>{
+                        console.log(res)
+                    }).catch(err => console.log(err))
+
+                }).catch(() => {
+
+                    //从localstorage中获取购物车数据 || 如果没有获取到数据,直接返回空的数组
+                    let carList = mrshop.store.get("carList") || [];
+                    //判断当前要加入到购物车中的数据是否在购物车中
+                    let car = carList.find(car => car.skuId == this.sku.id);
+
+                    if (car){
+                        car.num += this.num;
+                    }else {
+                        // 不存在 将商品新增到购物车
+                        car = {
+                            skuId:this.sku.id,
+                            title:this.sku.title,
+                            image:this.images[0],
+                            price:this.sku.price,
+                            num:this.num,
+                            ownSpec:JSON.stringify(this.ownSpec)
+                        }
+                        //将当前商品放到购物车
+                        carList.push(car);
+
+                    }
+                    //重置购物车数据
+                    mrshop.store.set("carList",carList);
+                    // //跳转到新增购物车成功页面,加上HTTP://为了防止url拼接
+                    // window.location.href="../success-cart.html";
+                });
+            }
         },
         computed:{
             sku(){
                 const index = Object.values(this.indexes).join("_");
                 return this.skus.find(sku => sku.indexes == index);
+            },
+            ownSpec(){
+                //获取商品特殊规格数据
+                let ownSpec = JSON.parse(this.sku.ownSpec);
+                let obj = {};
+                //遍历特有规格的id
+                Object.keys(ownSpec).forEach(key => {
+                    //通过规格参数id找到对应的特有规格名称 = 特有规格值
+                    obj[this.specParamMap[key]] = ownSpec[key];
+                })
+                return obj;
             },
             images(){
               return this.sku.images ? this.sku.images.split(",") : [];

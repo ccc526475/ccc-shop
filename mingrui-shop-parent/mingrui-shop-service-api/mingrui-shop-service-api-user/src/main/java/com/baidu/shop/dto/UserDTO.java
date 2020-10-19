@@ -36,8 +36,10 @@ public class UserDTO {
     @NotNull(message = "手机号不能为空", groups = {MingruiOperation.Add.class})
     private String phone;
 
+    @ApiModelProperty(hidden = true)
     private Date created;
 
+    @ApiModelProperty(hidden = true)
     private String salt;
 
 }

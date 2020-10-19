@@ -21,7 +21,6 @@ spring:
       uris: 119.45.208.112:9200
   application:
     name: search-service
-
 eureka:
   client:
     service-url:
